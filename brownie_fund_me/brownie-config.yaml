@@ -1,0 +1,25 @@
+dependencies: #this is where we tell brownie "- <organization/repo>@<version>"
+  - smartcontractkit/chainlink-brownie-contracts@1.1.1 #brownie will download this repository from github
+# after compiling dependencies, dependencies folder is created under build/contracts
+
+# we also need to tell brownie what @chainlink in fundme.sol file is
+# we are gonna say every time we say @chainlnk to brownie we will refer to above repository, we need to tell this to compiler
+compiler:
+  solc:
+    remappings:
+      - "@chainlink=smartcontractkit/chainlink-brownie-contracts@1.1.1" # saying whenever you see chainlink, it means the right side
+dotenv: .env
+# below is to add different addresses for different networks
+networks:
+  rinkeby:
+    eth_usd_price_feed: "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e" #eth usd price feed address
+    verify: True
+  mainnet-fork-dev:
+    eth_usd_price_feed: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419" #eth usd price feed address
+    verify: False #false since this is a fork
+  development:
+    verify: False
+  ganache-local: #after having "key error: ganache-local" error we added this one
+    verify: False
+wallets:
+  from_key: ${PRIVATE_KEY}

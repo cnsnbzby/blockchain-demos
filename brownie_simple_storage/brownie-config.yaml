@@ -1,0 +1,7 @@
+# this is a special file format brownie always looks for to grab info about where you gonna bouild, deploy, grab things
+dotenv: .env
+# this tells brownie when running scripts, grab the env variable from .env file
+
+# HERE WE can add more info about wallets like when and where we wanna use
+wallets:
+  from_key: ${PRIVATE_KEY} # surronding string with dollar sign and curly brackets automatically transforms it into env variable

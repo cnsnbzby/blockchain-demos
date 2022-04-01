@@ -1,0 +1,2 @@
+.env
+# this file prevents us accidently push our env file/folder to public
